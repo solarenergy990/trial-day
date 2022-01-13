@@ -1,16 +1,13 @@
 import Container from "../Container/Container";
-import ApplicationList from "../ApplicationList/ApplicationList"
-// import InterviewList from "../InterviewList/InterviewList"
-// import AccepedList from "../AcceptedList/AcceptedList"
+import Dashboard from "../Dashboard/Dashboard"
+
 
 
 
 const App = () => {
   return (
     <Container>
-      <ApplicationList />
-      {/* <InterviewList /> */}
-      {/* <AccepedList /> */}
+      <Dashboard />
     </Container>
   );
 }
