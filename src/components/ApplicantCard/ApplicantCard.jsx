@@ -15,7 +15,7 @@ const ApplicantCard = ({ applicantName, applicantNumber, applicantDesiredPositio
             Candidates number: { applicantNumber}
                 </Card.Text>
           {/* <Card.Link href="#">Delete Candidate</Card.Link> */}
-          <Button type="button" variant="danger" onClick={onClickRemove}>Delete</Button>
+          <Button type="button" variant="danger" onClick={onClickRemove}>Delete Candidate</Button>
           {/* <button type="button"  onClick={onClickRemove}>
         Delete
       </button> */}
