@@ -2,18 +2,20 @@ import React from 'react';
 import {Card} from 'react-bootstrap';
 
 
-const ApplicantCard = () => { 
+const ApplicantCard = ({ applicantName, applicantNumber, applicantDesiredPosition}) => { 
     return    <div>
         <Card style={{ width: '18rem' }}>
             <Card.Body>
-             <Card.Title>Card Title</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+             <Card.Title>Candidate</Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">{ applicantName}</Card.Subtitle>
                 <Card.Text>
-                 Some quick example text to build on the card title and make up the bulk of
-                 the card's content.
+            Candidates desired position: { applicantDesiredPosition}
+          </Card.Text>
+          <Card.Text>
+            Candidates number: { applicantNumber}
                 </Card.Text>
-    <Card.Link href="#">Card Link</Card.Link>
-    <Card.Link href="#">Another Link</Card.Link>
+    {/* <Card.Link href="#">Delete Candidate</Card.Link> */}
+    <Card.Link href="#">Move candidate further</Card.Link>
   </Card.Body>
 </Card>
         </div>
