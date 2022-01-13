@@ -1,9 +1,14 @@
-import Container  from "../Container/Container";
+import Container from "../Container/Container";
+import ApplicationList from "../ApplicationList/ApplicationList"
+import InterviewList from "../InterviewList/InterviewList"
+import AccepedList from "../AcceptedList/AcceptedList"
 
 const App = () => {
   return (
     <Container>
-      <div></div>
+      <ApplicationList />
+      <InterviewList />
+      <AccepedList />
     </Container>
   );
 }
