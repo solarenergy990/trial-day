@@ -2,7 +2,9 @@ import Container  from "../Container/Container";
 
 function App() {
   return (
-    <Container></Container>
+    <Container>
+      <div></div>
+    </Container>
   );
 }
 
