@@ -1,8 +1,8 @@
 import React from 'react';
-import {Card} from 'react-bootstrap';
+import {Card, Button } from 'react-bootstrap';
 
 
-const ApplicantCard = ({ applicantName, applicantNumber, applicantDesiredPosition}) => { 
+const ApplicantCard = ({ applicantName, applicantNumber, applicantDesiredPosition, onClickRemove}) => { 
     return    <div>
         <Card style={{ width: '18rem' }}>
             <Card.Body>
@@ -14,7 +14,11 @@ const ApplicantCard = ({ applicantName, applicantNumber, applicantDesiredPositio
           <Card.Text>
             Candidates number: { applicantNumber}
                 </Card.Text>
-    {/* <Card.Link href="#">Delete Candidate</Card.Link> */}
+          {/* <Card.Link href="#">Delete Candidate</Card.Link> */}
+          <Button type="button" variant="danger" onClick={onClickRemove}>Delete</Button>
+          {/* <button type="button"  onClick={onClickRemove}>
+        Delete
+      </button> */}
     <Card.Link href="#">Move candidate further</Card.Link>
   </Card.Body>
 </Card>

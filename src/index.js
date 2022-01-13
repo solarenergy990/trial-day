@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 import 'modern-normalize/modern-normalize.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import App from './components/App/App';
 

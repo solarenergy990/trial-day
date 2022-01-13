@@ -38,7 +38,9 @@ const Dashboard = () => {
     }
     };
     
-
+    const deleteApplicant = applicantId => {
+    setApplicants(applicants.filter(applicant => applicant.id !== applicantId));
+  };
   
 
   const getVisibleApplicants = () => {
@@ -55,7 +57,7 @@ const Dashboard = () => {
     
     return <>
         <ApplicantForm onSubmit={addApplicant} />
-        <ApplicationList applicants={ visibleApplicants}/>
+      <ApplicationList applicants={visibleApplicants} onApplicantDelete={ deleteApplicant}/>
         <InterviewList />
         {/* <AccepedList /> */}
     </>

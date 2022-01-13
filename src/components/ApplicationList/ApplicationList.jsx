@@ -1,6 +1,6 @@
 import ApplicantCard from "../ApplicantCard/ApplicantCard"
 
-const ApplicationList = ({ applicants }) => { 
+const ApplicationList = ({ applicants, onApplicantDelete }) => { 
     console.log(applicants)
     return <>
         <h2>Applications</h2>
@@ -15,7 +15,7 @@ const ApplicationList = ({ applicants }) => {
                             applicantName={name}
                             applicantNumber={number}
                             applicantDesiredPosition={desiredPosition}
-                            
+                            onClickRemove={() => onApplicantDelete(id)}
                         />
                     );
                 })}
