@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 
-import s from './ContactForm.module.css';
+
+import s from './Applicant.module.css';
 
 const ContactForm = ({ onSubmit }) => {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+    const [number, setNumber] = useState('');
+    const [desiredPosition, setDesiredPosition] = useState('');
+
 
   const handleChange = evt => {
     const { value } = evt.target;
@@ -15,20 +17,24 @@ const ContactForm = ({ onSubmit }) => {
     }
     if (evt.currentTarget.name === 'number') {
       setNumber(value);
+      }
+      if (evt.currentTarget.name === 'desiredPosition') {
+      setDesiredPosition(value);
     }
   };
 
   const handleSubmit = evt => {
     evt.preventDefault();
 
-    onSubmit({ name, number });
+    onSubmit({ name, number, desiredPosition });
 
     reset();
   };
 
   const reset = () => {
     setName('');
-    setNumber('');
+      setNumber('');
+      setDesiredPosition('');
   };
 
   return (
@@ -60,9 +66,22 @@ const ContactForm = ({ onSubmit }) => {
               value={number}
               className={s.input}
             />
+                  </label>
+                  <label className={s.label}>
+            <p className={s.labelText}>Desired position</p>
+            <input
+              type="text"
+              name="desiredPosition"
+              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+              title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+              required
+              onChange={handleChange}
+              value={desiredPosition}
+              className={s.input}
+            />
           </label>
           <button type="submit" className={s.button}>
-            Add contact
+            +
           </button>
         </div>
       </form>
@@ -70,8 +89,6 @@ const ContactForm = ({ onSubmit }) => {
   );
 };
 
-ContactForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
+
 
 export default ContactForm;

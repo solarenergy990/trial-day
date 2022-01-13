@@ -1,6 +1,8 @@
+import { useState } from "react";
 import ApplicationList from "../ApplicationList/ApplicationList"
 import InterviewList from "../InterviewList/InterviewList"
 // import AccepedList from "../AcceptedList/AcceptedList"
+import ApplicantForm from "../ApplicantForm/ApplicantForm"
 
 import shortid from "shortid";
 
@@ -8,8 +10,11 @@ import initialApplicants from '../../components/Dashboard/applicants.json';
 import useLocalStorage from '../../hooks/useLocalStorage';
 
 const Dashboard = () => { 
-    const [applicants, setApplicants] = useLocalStorage('applicants', initialApplicants);
+    // const [applicants, setApplicants] = useLocalStorage('applicants', initialApplicants);
+    const [applicants, setApplicants] = useState(initialApplicants)
+    const [filter, setFilter] = useState('');
 
+    console.log("applicants from storage:", applicants)
     const addApplicant = data => {
     const { name, number, desiredPosition } = data;
 
@@ -31,10 +36,26 @@ const Dashboard = () => {
     } else {
       alert(`${name} is already in list`);
     }
+    };
+    
+
+  
+
+  const getVisibleApplicants = () => {
+    const normalizedFilter = filter.toLowerCase();
+
+    return applicants.filter(applicant =>
+      applicant.name.toLowerCase().includes(normalizedFilter),
+    );
   };
 
+  const visibleApplicants = getVisibleApplicants();
+
+    console.log("list of applicants:",visibleApplicants)
+    
     return <>
-        <ApplicationList />
+        <ApplicantForm onSubmit={addApplicant} />
+        <ApplicationList applicants={ visibleApplicants}/>
         <InterviewList />
         {/* <AccepedList /> */}
     </>
