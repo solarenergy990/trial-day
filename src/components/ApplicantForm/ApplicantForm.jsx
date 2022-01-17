@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 
 import s from './Applicant.module.css';
 
-const ContactForm = ({ onSubmit }) => {
+const ContactForm = ({ onSubmit, setActive }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const [desiredPosition, setDesiredPosition] = useState('');
@@ -34,6 +34,7 @@ const ContactForm = ({ onSubmit }) => {
     setName('');
     setNumber('');
     setDesiredPosition('');
+    setActive(false);
   };
 
   return (

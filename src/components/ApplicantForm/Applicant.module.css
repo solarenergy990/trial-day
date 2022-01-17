@@ -1,8 +1,9 @@
 .label {
   margin-right: 15px;
+  display: block;
 }
 .labelText {
-  display: inline-flex;
+  /* display: block; */
   margin-right: 15px;
 
   font-size: 14px;
@@ -18,8 +19,4 @@
   border-radius: 8px;
 
   margin-bottom: 15px;
-}
-
-.formContainer {
-  display: inline-block;
 }

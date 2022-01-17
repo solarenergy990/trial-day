@@ -1,18 +1,20 @@
 import { useState } from 'react';
 import ApplicationList from '../ApplicationList/ApplicationList';
 import InterviewList from '../InterviewList/InterviewList';
-// import AccepedList from "../AcceptedList/AcceptedList"
+import Modal from '../Modal/Modal';
 import ApplicantForm from '../ApplicantForm/ApplicantForm';
 
 import shortid from 'shortid';
+// import { Button } from 'react-bootstrap';
 
 import initialApplicants from '../../components/Dashboard/applicants.json';
-// import useLocalStorage from '../../hooks/useLocalStorage';
 
 const Dashboard = () => {
   // const [applicants, setApplicants] = useLocalStorage('applicants', initialApplicants);
   const [applicants, setApplicants] = useState(initialApplicants);
   const [filter, setFilter] = useState('');
+
+  const [modalActive, setModalActive] = useState(false);
 
   console.log('applicants from storage:', applicants);
   const addApplicant = data => {
@@ -56,21 +58,19 @@ const Dashboard = () => {
 
   return (
     <>
-      <div>
-        <ApplicantForm onSubmit={addApplicant} />
-      </div>
-
+      <Modal active={modalActive} setActive={setModalActive}>
+        <ApplicantForm onSubmit={addApplicant} setActive={setModalActive} />
+      </Modal>
       <div>
         <ApplicationList
           applicants={visibleApplicants}
           onApplicantDelete={deleteApplicant}
+          setActive={setModalActive}
         />
       </div>
       <div>
         <InterviewList />
       </div>
-
-      {/* <AccepedList /> */}
     </>
   );
 };
