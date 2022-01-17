@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
 
 import s from './Applicant.module.css';
 
@@ -78,9 +79,9 @@ const ContactForm = ({ onSubmit }) => {
               className={s.input}
             />
           </label>
-          <button type="submit" className={s.button}>
-            +
-          </button>
+          <Button type="submit" variant="btn btn-success">
+            Add Candidate
+          </Button>
         </div>
       </form>
     </div>
