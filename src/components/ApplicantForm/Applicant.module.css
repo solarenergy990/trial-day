@@ -3,8 +3,8 @@
 }
 .labelText {
   display: inline-flex;
-  /* margin-right: 15px; */
-  margin-bottom: 0;
+  margin-right: 15px;
+
   font-size: 14px;
 }
 
@@ -18,4 +18,8 @@
   border-radius: 8px;
 
   margin-bottom: 15px;
+}
+
+.formContainer {
+  display: inline-block;
 }
