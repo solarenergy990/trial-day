@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 
-
 import s from './Applicant.module.css';
 
 const ContactForm = ({ onSubmit }) => {
   const [name, setName] = useState('');
-    const [number, setNumber] = useState('');
-    const [desiredPosition, setDesiredPosition] = useState('');
-
+  const [number, setNumber] = useState('');
+  const [desiredPosition, setDesiredPosition] = useState('');
 
   const handleChange = evt => {
     const { value } = evt.target;
@@ -17,8 +15,8 @@ const ContactForm = ({ onSubmit }) => {
     }
     if (evt.currentTarget.name === 'number') {
       setNumber(value);
-      }
-      if (evt.currentTarget.name === 'desiredPosition') {
+    }
+    if (evt.currentTarget.name === 'desiredPosition') {
       setDesiredPosition(value);
     }
   };
@@ -33,8 +31,8 @@ const ContactForm = ({ onSubmit }) => {
 
   const reset = () => {
     setName('');
-      setNumber('');
-      setDesiredPosition('');
+    setNumber('');
+    setDesiredPosition('');
   };
 
   return (
@@ -47,7 +45,7 @@ const ContactForm = ({ onSubmit }) => {
               type="text"
               name="name"
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+              title="Name can contain letters, spaces,  dashes, apostrophes e.g. Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan etc."
               required
               onChange={handleChange}
               value={name}
@@ -60,20 +58,20 @@ const ContactForm = ({ onSubmit }) => {
               type="tel"
               name="number"
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-              title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+              title="Telephone number can contain numbers, dashes, spaces, round brackets and can begin with +"
               required
               onChange={handleChange}
               value={number}
               className={s.input}
             />
-                  </label>
-                  <label className={s.label}>
+          </label>
+          <label className={s.label}>
             <p className={s.labelText}>Desired position</p>
             <input
               type="text"
               name="desiredPosition"
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+              title="Text can contain letters, spaces,  dashes, apostrophes e.g. Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan etc."
               required
               onChange={handleChange}
               value={desiredPosition}
@@ -88,7 +86,5 @@ const ContactForm = ({ onSubmit }) => {
     </div>
   );
 };
-
-
 
 export default ContactForm;
