@@ -1,25 +1,28 @@
 import ApplicantCard from '../ApplicantCard/ApplicantCard';
-
+import s from './ApplicationList.module.css';
 import { Button } from 'react-bootstrap';
 
 const ApplicationList = ({ applicants, onApplicantDelete, setActive }) => {
   console.log(setActive);
   return (
     <>
-      <h2>Applications</h2>
-      <div>
+      <div className={s.list}>
+        <h2 className={s.title}>Applications</h2>
+
         <ul>
           {applicants.map(applicant => {
             const { id, name, number, desiredPosition } = applicant;
 
             return (
-              <ApplicantCard
-                key={id}
-                applicantName={name}
-                applicantNumber={number}
-                applicantDesiredPosition={desiredPosition}
-                onClickRemove={() => onApplicantDelete(id)}
-              />
+              <div className={s.card}>
+                <ApplicantCard
+                  key={id}
+                  applicantName={name}
+                  applicantNumber={number}
+                  applicantDesiredPosition={desiredPosition}
+                  onClickRemove={() => onApplicantDelete(id)}
+                />
+              </div>
             );
           })}
         </ul>

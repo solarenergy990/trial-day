@@ -61,13 +61,13 @@ const Dashboard = () => {
       <Modal active={modalActive} setActive={setModalActive}>
         <ApplicantForm onSubmit={addApplicant} setActive={setModalActive} />
       </Modal>
-      <div>
-        <ApplicationList
-          applicants={visibleApplicants}
-          onApplicantDelete={deleteApplicant}
-          setActive={setModalActive}
-        />
-      </div>
+
+      <ApplicationList
+        applicants={visibleApplicants}
+        onApplicantDelete={deleteApplicant}
+        setActive={setModalActive}
+      />
+
       <div>
         <InterviewList />
       </div>
