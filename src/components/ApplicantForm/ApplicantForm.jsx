@@ -7,7 +7,9 @@ const ContactForm = ({ onSubmit, setActive }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const [desiredPosition, setDesiredPosition] = useState('');
+  const [status, setStatus] = useState('');
 
+  console.log(status);
   const handleChange = evt => {
     const { value } = evt.target;
 
@@ -20,12 +22,13 @@ const ContactForm = ({ onSubmit, setActive }) => {
     if (evt.currentTarget.name === 'desiredPosition') {
       setDesiredPosition(value);
     }
+    setStatus('application');
   };
 
   const handleSubmit = evt => {
     evt.preventDefault();
 
-    onSubmit({ name, number, desiredPosition });
+    onSubmit({ name, number, desiredPosition, status });
 
     reset();
   };

@@ -5,26 +5,25 @@ import Modal from '../Modal/Modal';
 import ApplicantForm from '../ApplicantForm/ApplicantForm';
 
 import shortid from 'shortid';
-// import { Button } from 'react-bootstrap';
 
 import initialApplicants from '../../components/Dashboard/applicants.json';
 
 const Dashboard = () => {
-  // const [applicants, setApplicants] = useLocalStorage('applicants', initialApplicants);
   const [applicants, setApplicants] = useState(initialApplicants);
   const [filter, setFilter] = useState('');
-
   const [modalActive, setModalActive] = useState(false);
 
-  console.log('applicants from storage:', applicants);
+  // console.log('applicants from storage:', applicants);
+
   const addApplicant = data => {
-    const { name, number, desiredPosition } = data;
+    const { name, number, desiredPosition, status } = data;
 
     const applicant = {
       id: shortid.generate(),
       name,
       number,
       desiredPosition,
+      status,
     };
 
     const checkedApplicantsNames = applicants.map(applicant => {
@@ -69,7 +68,10 @@ const Dashboard = () => {
       />
 
       <div>
-        <InterviewList />
+        <InterviewList
+          applicants={visibleApplicants}
+          onApplicantDelete={deleteApplicant}
+        />
       </div>
     </>
   );
