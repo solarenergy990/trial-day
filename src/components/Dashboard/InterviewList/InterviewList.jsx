@@ -16,9 +16,9 @@ const InterviewList = ({
           {applicants.map(applicant => {
             const { id, name, number, desiredPosition, status } = applicant;
 
-            if (status === 'interview') {
-              return (
-                <div className={s.card} key={id}>
+            return (
+              <div className={s.card} key={id}>
+                {status === 'interview' && (
                   <ApplicantCard
                     applicantName={name}
                     applicantNumber={number}
@@ -27,9 +27,9 @@ const InterviewList = ({
                     onClickToApprove={() => onApproveApplicant(id)}
                     applicantStatus={status}
                   />
-                </div>
-              );
-            }
+                )}
+              </div>
+            );
           })}
         </ul>
       </div>
