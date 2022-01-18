@@ -1,5 +1,5 @@
-import { useState, useContext } from 'react';
-import ApplicationList from '../ApplicationList/ApplicationList';
+import { useState } from 'react';
+import ApplicationList from './ApplicationList/ApplicationList';
 import InterviewList from '../InterviewList/InterviewList';
 import ApprovedList from '../ApprovedList/ApprovedList';
 import Modal from '../Modal/Modal';
@@ -74,8 +74,6 @@ const Dashboard = () => {
   };
 
   const visibleApplicants = getVisibleApplicants();
-
-  console.log('list of applicants:', visibleApplicants);
 
   return (
     <>

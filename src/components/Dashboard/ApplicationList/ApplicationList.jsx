@@ -1,4 +1,4 @@
-import ApplicantCard from '../ApplicantCard/ApplicantCard';
+import ApplicantCard from '../../ApplicantCard/ApplicantCard';
 import s from './ApplicationList.module.css';
 import { Button } from 'react-bootstrap';
 
