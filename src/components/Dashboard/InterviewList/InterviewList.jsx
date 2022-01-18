@@ -1,5 +1,5 @@
 import React from 'react';
-import ApplicantCard from '../ApplicantCard/ApplicantCard';
+import ApplicantCard from '../../ApplicantCard/ApplicantCard';
 import s from './InterviewList.module.css';
 
 const InterviewList = ({

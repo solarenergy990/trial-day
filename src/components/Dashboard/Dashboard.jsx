@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import ApplicationList from './ApplicationList/ApplicationList';
-import InterviewList from '../InterviewList/InterviewList';
+import InterviewList from './InterviewList/InterviewList';
 import ApprovedList from '../ApprovedList/ApprovedList';
 import Modal from '../Modal/Modal';
 import ApplicantForm from '../ApplicantForm/ApplicantForm';
