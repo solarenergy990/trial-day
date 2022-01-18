@@ -1,5 +1,5 @@
 import React from 'react';
-import ApplicantCard from '../ApplicantCard/ApplicantCard';
+import ApplicantCard from '../../ApplicantCard/ApplicantCard';
 import s from './ApprovedList.module.css';
 
 const ApprovedList = ({ applicants, onApplicantDelete }) => {
@@ -12,9 +12,9 @@ const ApprovedList = ({ applicants, onApplicantDelete }) => {
           {applicants.map(applicant => {
             const { id, name, number, desiredPosition, status } = applicant;
 
-            if (status === 'approved') {
-              return (
-                <div className={s.card} key={id}>
+            return (
+              <div className={s.card} key={id}>
+                {status === 'approved' && (
                   <ApplicantCard
                     applicantName={name}
                     applicantNumber={number}
@@ -22,9 +22,9 @@ const ApprovedList = ({ applicants, onApplicantDelete }) => {
                     onClickRemove={() => onApplicantDelete(id)}
                     applicantStatus={status}
                   />
-                </div>
-              );
-            }
+                )}
+              </div>
+            );
           })}
         </ul>
       </div>
