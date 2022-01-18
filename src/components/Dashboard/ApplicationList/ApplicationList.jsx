@@ -17,9 +17,9 @@ const ApplicationList = ({
           {applicants.map(applicant => {
             const { id, name, number, desiredPosition, status } = applicant;
 
-            if (status === 'application') {
-              return (
-                <div className={s.card} key={id}>
+            return (
+              <div className={s.card} key={id}>
+                {status === 'application' && (
                   <ApplicantCard
                     applicantName={name}
                     applicantNumber={number}
@@ -28,9 +28,9 @@ const ApplicationList = ({
                     onClickToInterview={() => onApplicantToInterview(id)}
                     applicantStatus={status}
                   />
-                </div>
-              );
-            }
+                )}
+              </div>
+            );
           })}
         </ul>
 
