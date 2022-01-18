@@ -1,19 +1,18 @@
 import { useState, useContext } from 'react';
 import ApplicationList from '../ApplicationList/ApplicationList';
 import InterviewList from '../InterviewList/InterviewList';
+import ApprovedList from '../ApprovedList/ApprovedList';
 import Modal from '../Modal/Modal';
 import ApplicantForm from '../ApplicantForm/ApplicantForm';
 
 import shortid from 'shortid';
 
-import StatusContext from '../../context/context';
 import initialApplicants from '../../components/Dashboard/applicants.json';
 
 const Dashboard = () => {
   const [applicants, setApplicants] = useState(initialApplicants);
   const [filter, setFilter] = useState('');
   const [modalActive, setModalActive] = useState(false);
-  const { status, setStatus } = useContext(StatusContext);
 
   const addApplicant = data => {
     const { name, number, desiredPosition, status } = data;
@@ -43,13 +42,27 @@ const Dashboard = () => {
     setApplicants(applicants.filter(applicant => applicant.id !== applicantId));
   };
 
-  const makeApplicantAppointment = (applicantId, applicantStatus) => {
-    console.log(applicantId);
-    const qwe = applicants.find(applicant => applicantId === applicant.id);
-    qwe.status = 'interview';
+  const makeApplicantAppointment = applicantId => {
+    const applicantForInterview = applicants.find(
+      applicant => applicantId === applicant.id,
+    );
+    applicantForInterview.status = 'interview';
+
     setApplicants(prevApplicants => {
       return [...prevApplicants];
     });
+  };
+
+  const approveApplicant = applicantId => {
+    const applicantForApproval = applicants.find(
+      applicant => applicantId === applicant.id,
+    );
+    applicantForApproval.status = 'approved';
+
+    setApplicants(prevApplicants => {
+      return [...prevApplicants];
+    });
+    return;
   };
 
   const getVisibleApplicants = () => {
@@ -69,20 +82,22 @@ const Dashboard = () => {
       <Modal active={modalActive} setActive={setModalActive}>
         <ApplicantForm onSubmit={addApplicant} setActive={setModalActive} />
       </Modal>
-
       <ApplicationList
         applicants={visibleApplicants}
         onApplicantDelete={deleteApplicant}
         setActive={setModalActive}
         onApplicantToInterview={makeApplicantAppointment}
       />
+      <InterviewList
+        applicants={visibleApplicants}
+        onApplicantDelete={deleteApplicant}
+        onApproveApplicant={approveApplicant}
+      />
 
-      <div>
-        <InterviewList
-          applicants={visibleApplicants}
-          onApplicantDelete={deleteApplicant}
-        />
-      </div>
+      <ApprovedList
+        applicants={visibleApplicants}
+        onApplicantDelete={deleteApplicant}
+      />
     </>
   );
 };

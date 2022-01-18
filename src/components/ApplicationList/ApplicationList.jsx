@@ -8,9 +8,6 @@ const ApplicationList = ({
   setActive,
   onApplicantToInterview,
 }) => {
-  // console.log(setActive);
-  //   console.log(applicants);
-
   return (
     <>
       <div className={s.list}>
@@ -28,9 +25,7 @@ const ApplicationList = ({
                     applicantNumber={number}
                     applicantDesiredPosition={desiredPosition}
                     onClickRemove={() => onApplicantDelete(id)}
-                    onClickToInterview={() =>
-                      onApplicantToInterview(id, status)
-                    }
+                    onClickToInterview={() => onApplicantToInterview(id)}
                     applicantStatus={status}
                   />
                 </div>

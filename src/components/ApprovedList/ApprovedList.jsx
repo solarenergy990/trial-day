@@ -1,22 +1,18 @@
 import React from 'react';
 import ApplicantCard from '../ApplicantCard/ApplicantCard';
-import s from './InterviewList.module.css';
+import s from './ApprovedList.module.css';
 
-const InterviewList = ({
-  applicants,
-  onApplicantDelete,
-  onApproveApplicant,
-}) => {
+const ApprovedList = ({ applicants, onApplicantDelete }) => {
   return (
     <>
       <div className={s.list}>
-        <h2 className={s.title}>Interview</h2>
+        <h2 className={s.title}>Approved</h2>
 
         <ul>
           {applicants.map(applicant => {
             const { id, name, number, desiredPosition, status } = applicant;
 
-            if (status === 'interview') {
+            if (status === 'approved') {
               return (
                 <div className={s.card} key={id}>
                   <ApplicantCard
@@ -24,7 +20,6 @@ const InterviewList = ({
                     applicantNumber={number}
                     applicantDesiredPosition={desiredPosition}
                     onClickRemove={() => onApplicantDelete(id)}
-                    onClickToApprove={() => onApproveApplicant(id)}
                     applicantStatus={status}
                   />
                 </div>
@@ -37,4 +32,4 @@ const InterviewList = ({
   );
 };
 
-export default InterviewList;
+export default ApprovedList;
