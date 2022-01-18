@@ -20,6 +20,7 @@ const InterviewList = ({ applicants, onApplicantDelete }) => {
                     applicantNumber={number}
                     applicantDesiredPosition={desiredPosition}
                     onClickRemove={() => onApplicantDelete(id)}
+                    applicantStatus={status}
                   />
                 </div>
               );

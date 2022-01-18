@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import ApplicationList from '../ApplicationList/ApplicationList';
 import InterviewList from '../InterviewList/InterviewList';
 import Modal from '../Modal/Modal';
@@ -6,14 +6,14 @@ import ApplicantForm from '../ApplicantForm/ApplicantForm';
 
 import shortid from 'shortid';
 
+import StatusContext from '../../context/context';
 import initialApplicants from '../../components/Dashboard/applicants.json';
 
 const Dashboard = () => {
   const [applicants, setApplicants] = useState(initialApplicants);
   const [filter, setFilter] = useState('');
   const [modalActive, setModalActive] = useState(false);
-
-  // console.log('applicants from storage:', applicants);
+  const { status, setStatus } = useContext(StatusContext);
 
   const addApplicant = data => {
     const { name, number, desiredPosition, status } = data;
@@ -43,6 +43,15 @@ const Dashboard = () => {
     setApplicants(applicants.filter(applicant => applicant.id !== applicantId));
   };
 
+  const makeApplicantAppointment = (applicantId, applicantStatus) => {
+    console.log(applicantId);
+    const qwe = applicants.find(applicant => applicantId === applicant.id);
+    qwe.status = 'interview';
+    setApplicants(prevApplicants => {
+      return [...prevApplicants];
+    });
+  };
+
   const getVisibleApplicants = () => {
     const normalizedFilter = filter.toLowerCase();
 
@@ -65,6 +74,7 @@ const Dashboard = () => {
         applicants={visibleApplicants}
         onApplicantDelete={deleteApplicant}
         setActive={setModalActive}
+        onApplicantToInterview={makeApplicantAppointment}
       />
 
       <div>

@@ -6,6 +6,8 @@ const ApplicantCard = ({
   applicantNumber,
   applicantDesiredPosition,
   onClickRemove,
+  onClickToInterview,
+  applicantStatus,
 }) => {
   return (
     <div>
@@ -21,10 +23,26 @@ const ApplicantCard = ({
           <Card.Text>Candidates number: {applicantNumber}</Card.Text>
 
           <Button type="button" variant="danger" onClick={onClickRemove}>
-            Delete Candidate
+            Delete
           </Button>
-
-          <Card.Link href="#">Move candidate further</Card.Link>
+          {applicantStatus === 'application' && (
+            <Button
+              type="button"
+              variant="success"
+              onClick={onClickToInterview}
+            >
+              Make appointment
+            </Button>
+          )}
+          {applicantStatus === 'interview' && (
+            <Button
+              type="button"
+              variant="success"
+              onClick={onClickToInterview}
+            >
+              Approve Candidate
+            </Button>
+          )}
         </Card.Body>
       </Card>
     </div>

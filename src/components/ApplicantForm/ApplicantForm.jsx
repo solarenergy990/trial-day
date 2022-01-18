@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Button } from 'react-bootstrap';
 
 import s from './Applicant.module.css';
 
-const ContactForm = ({ onSubmit, setActive }) => {
+import StatusContext from '../../context/context';
+
+const ContactForm = ({
+  onSubmit,
+  setActive,
+  // setApplicantStatus,
+  // currentApplicantStatus,
+}) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const [desiredPosition, setDesiredPosition] = useState('');
-  const [status, setStatus] = useState('');
+  const { status, setStatus } = useContext(StatusContext);
+  // const [status, setStatus] = useState('');
 
-  console.log(status);
   const handleChange = evt => {
     const { value } = evt.target;
 
@@ -27,6 +34,8 @@ const ContactForm = ({ onSubmit, setActive }) => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
+
+    console.log(status);
 
     onSubmit({ name, number, desiredPosition, status });
 

@@ -2,7 +2,12 @@ import ApplicantCard from '../ApplicantCard/ApplicantCard';
 import s from './ApplicationList.module.css';
 import { Button } from 'react-bootstrap';
 
-const ApplicationList = ({ applicants, onApplicantDelete, setActive }) => {
+const ApplicationList = ({
+  applicants,
+  onApplicantDelete,
+  setActive,
+  onApplicantToInterview,
+}) => {
   // console.log(setActive);
   //   console.log(applicants);
 
@@ -23,6 +28,10 @@ const ApplicationList = ({ applicants, onApplicantDelete, setActive }) => {
                     applicantNumber={number}
                     applicantDesiredPosition={desiredPosition}
                     onClickRemove={() => onApplicantDelete(id)}
+                    onClickToInterview={() =>
+                      onApplicantToInterview(id, status)
+                    }
+                    applicantStatus={status}
                   />
                 </div>
               );
